@@ -1,7 +1,6 @@
 
 // action="https://api.web3forms.com/submit"
-window.addEventListener('load', () => {
-})
+
 const form = document.getElementById("contact-form");
 console.log(form)
 
@@ -19,8 +18,9 @@ form.addEventListener("submit", function (event) {
         form.submit();
     } else {
         // if the  Form is not valid, show error message
-        errorMsg.style.display = "block";
-        errorMsg.innerText = "Please fill out all the fields correctly.";
+        // errorMsg.style.display = "block";
+        // errorMsg.innerText = "Please fill out all the fields correctly.";
+        
     }
     function validateForm() {
         let isValid = true;
@@ -29,15 +29,19 @@ form.addEventListener("submit", function (event) {
         errorMsg.innerText = "";
         errorMsg.style.display = "none";
 
+        if (messageInput.value.trim() === "") {
+            errorMsg.style.display = "block";
+        errorMsg.innerText = "Please fill the message box";
+            isValid = false;
+        }
         // Validate name
         if (nameInput.value.trim() === "") {
+            errorMsg.style.display = "block";
+        errorMsg.innerText = "Please enter the name.";
             isValid = false;
         }
 
         // Validate message
-        if (messageInput.value.trim() === "") {
-            isValid = false;
-        }
 
         return isValid;
     }
